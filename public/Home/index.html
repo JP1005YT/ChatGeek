@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Chat Geek - Entrar</title>
+    <title>res</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
 </head>
 <body>
-    <h1>Escolha um nome para entrar</h1>
-    <input placeholder="Nome">
-    <button onclick="pass()">Entrar</button>
+    <h1>Logado como : <span id="user"></span></h1><hr>
+    <div class="chatGlobal">
+        <input class="chatInput">
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.js"></script>
     <script src='main.js'></script>
 </body>
 </html>

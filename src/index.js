@@ -14,7 +14,7 @@ app.post("/login",async (req,res) => {
     const data = await P.Buscar("./data/users.json")
     let passa
     data.users.forEach(user => {
-        if(user.name === req.body.name){
+        if(user.name.toLowerCase() === req.body.name.toLowerCase()){
             passa =  false
         }else{
             passa =  true
@@ -22,8 +22,29 @@ app.post("/login",async (req,res) => {
     });
 
     if(passa){
-        res.send(true)
+        novoUsuario = {
+            "name" : req.body.name.toLowerCase(),
+            "id" : P.uid.v4()
+        }
+    
+        data.users.push(novoUsuario)
+
+        P.Guardar("./data/users.json",data)
+        res.send({"id":novoUsuario.id})
     }else{        
-        res.send({"Erro":"Usuario Ja existe"})
+        res.send({"erro":"Usuario Ja existe"})
     }
+})
+
+app.post("/check",async (req,res) => {
+    const data = await P.Buscar("./data/users.json")
+    let passa
+    data.users.forEach(user => {
+        if(user.id === req.body.id){
+            passa =  user
+        }else{
+            passa =  false
+        }
+    });
+    res.send(passa)
 })
