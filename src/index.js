@@ -11,5 +11,19 @@ S.start()
 const app = S.app
 // Banco de dados
 app.post("/login",async (req,res) => {
-    res.send()
+    const data = await P.Buscar("./data/users.json")
+    let passa
+    data.users.forEach(user => {
+        if(user.name === req.body.name){
+            passa =  false
+        }else{
+            passa =  true
+        }
+    });
+
+    if(passa){
+        res.send(true)
+    }else{        
+        res.send({"Erro":"Usuario Ja existe"})
+    }
 })
