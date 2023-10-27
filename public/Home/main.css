@@ -10,22 +10,25 @@ body{
     justify-content: center;
     align-items: center ;
     width: 100vw;
-    height: 100vh;
+    /* min-height: 100vh; */
     overflow-x: hidden;
 }
 .chatGlobal{
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
     background: url("FundoSocial.png");
+    background-size: 20%;
+    padding: 5% 2px 6% 2px;
 }
 .chatInput{
+    z-index: 99;
     width: 90%;
     margin:0 0 2% 5%;
-    padding: 1%;
     font-size: 35px;
     bottom: 0;
-    position: absolute;
+    position: fixed;
     background: #fff;
+    padding: 1%;
 }
 h1{
     padding: 10px;
@@ -33,4 +36,65 @@ h1{
     top:0;
     position: absolute;
 }
+.message{
+    padding: 20px;
+    width: 100%;
+}
+.message.my{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+.message .content{
+    position: relative;
+    padding: 50px 25px 25px 25px;
+    margin: 15px;
+    background: #fff;
+    width: 30%;
+    font-size: 25px;
+    border-radius: 25px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+.message .content .name{
+    font-weight: bold;
+    top: 0;
+    position: absolute;
+    margin: 10px 10px 10px 0;
+}
+.message .content .time{
+    font-size: 15px;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    margin: 15px;
+}
 
+@media (max-width: 768px) {
+    .chatGlobal{
+        width: 100%;
+        min-height: 100vh;
+        background: url("FundoSocial.png");
+        background-size: 20%;
+        padding: 20% 2px 20% 2px;
+    }
+    .message .content{
+        padding: 27px 10px 25px 10px;
+        margin: 5px;
+        font-size: 15px;
+        width: 70%;
+    }
+    .message{
+        padding: 10px;
+    }
+    .message .content .time{
+        font-size: 10px;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        margin: 0 10px 10px 0;
+    }
+    h1{
+        width: 100%;
+        text-align: center;
+    }
+}
